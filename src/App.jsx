@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 const NAV_LINKS = ["Home", "Services", "Technology", "Gallery", "Doctors", "Reviews", "FAQ", "Book Appointment", "Contact"];
@@ -108,19 +108,19 @@ export default function AIMSDentalWebsite() {
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", doctor: "", date: "", time: "", notes: "", urgency: "routine", insurance: "" });
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState(null);
   const [instrFilter, setInstrFilter] = useState("All");
 
-  const formRef = useRef<HTMLFormElement>(null);
+  const formRef = useRef(null);
 
-  const scrollTo = (section: string) => {
+  const scrollTo = (section) => {
     setActiveNav(section);
     const id = section.toLowerCase().replace(/ /g, "-");
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!form.name || !form.phone || !form.service || !form.date || !form.time) {
@@ -130,7 +130,6 @@ export default function AIMSDentalWebsite() {
 
     setIsSending(true);
 
-    // Replace these values with your actual parameters from emailjs.com dashboard
     const SERVICE_ID = "service_s82bfgl";
     const TEMPLATE_ID = "template_l8y1xp8";
     const PUBLIC_KEY = "ywCB_2Hxq86sogEak";
@@ -152,7 +151,7 @@ export default function AIMSDentalWebsite() {
       },
       PUBLIC_KEY
     )
-    .then((result) => {
+    .then(() => {
         setSubmitted(true);
     })
     .catch((error) => {
@@ -167,8 +166,8 @@ export default function AIMSDentalWebsite() {
   const instrumentTags = ["All", ...Array.from(new Set(INSTRUMENTS.map(i => i.tag)))];
   const filteredInstr = instrFilter === "All" ? INSTRUMENTS : INSTRUMENTS.filter(i => i.tag === instrFilter);
 
-  const tagColors: Record<string, string> = { Diagnostics: "#e6f1fb", Implantology: "#e1f5ee", Hygiene: "#fef3c7", Cosmetic: "#fce7f3", Orthodontics: "#faece7", Safety: "#ede9fe" };
-  const tagText: Record<string, string> = { Diagnostics: "#1a6fc4", Implantology: "#0f6e56", Hygiene: "#b45309", Cosmetic: "#be185d", Orthodontics: "#993c1d", Safety: "#6d28d9" };
+  const tagColors = { Diagnostics: "#e6f1fb", Implantology: "#e1f5ee", Hygiene: "#fef3c7", Cosmetic: "#fce7f3", Orthodontics: "#faece7", Safety: "#ede9fe" };
+  const tagText = { Diagnostics: "#1a6fc4", Implantology: "#0f6e56", Hygiene: "#b45309", Cosmetic: "#be185d", Orthodontics: "#993c1d", Safety: "#6d28d9" };
 
   return (
     <div className="bg-white text-[#1a1a2e] min-h-screen font-sans selection:bg-[#e6f1fb] selection:text-[#1a6fc4]">
@@ -230,7 +229,7 @@ export default function AIMSDentalWebsite() {
         )}
       </nav>
 
-      {/* ── HERO COMPONENT ── */}
+      {/* ── HERO ── */}
       <section id="home" className="relative bg-gradient-to-b from-[#f0f6ff] to-white pt-12 pb-20 px-4 md:px-8 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#1a6fc4_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.15]" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
@@ -282,7 +281,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── CLINICAL SERVICES GRID ── */}
+      {/* ── SERVICES ── */}
       <section id="services" className="py-20 px-4 md:px-8 bg-zinc-50/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
@@ -309,7 +308,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── ADVANCED TECHNOLOGY COMPONENT ── */}
+      {/* ── TECHNOLOGY ── */}
       <section id="technology" className="py-20 px-4 md:px-8 bg-white border-t border-zinc-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
@@ -356,7 +355,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── CLINIC GALLERY COMPONENT ── */}
+      {/* ── GALLERY ── */}
       <section id="gallery" className="py-20 px-4 md:px-8 bg-zinc-50/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-12 space-y-3">
@@ -379,7 +378,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── ALUMNI DOCTORS ROSTER ── */}
+      {/* ── DOCTORS ── */}
       <section id="doctors" className="py-20 px-4 md:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
@@ -439,7 +438,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── PATIENT REVIEWS SYSTEM ── */}
+      {/* ── REVIEWS ── */}
       <section id="reviews" className="py-20 px-4 md:px-8 bg-[#1a1a2e] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:32px_32px]" />
         <div className="max-w-7xl mx-auto relative z-10">
@@ -474,7 +473,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── DYNAMIC REASON COMPONENT ── */}
+      {/* ── WHY CHOOSE US ── */}
       <section className="py-20 px-4 md:px-8 bg-zinc-50/50 border-y border-zinc-100">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
@@ -501,7 +500,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── FREQUENTLY ASKED QUESTIONS COMPONENT ── */}
+      {/* ── FAQ ── */}
       <section id="faq" className="py-20 px-4 md:px-8 bg-white">
         <div className="max-w-3xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-12 space-y-3">
@@ -530,7 +529,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── APPOINTMENT SCHEDULING FORM WITH EMAILJS ── */}
+      {/* ── BOOK APPOINTMENT ── */}
       <section id="book-appointment" className="py-20 px-4 md:px-8 bg-zinc-50/50 border-t border-zinc-100">
         <div className="max-w-4xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-12 space-y-3">
@@ -556,7 +555,6 @@ export default function AIMSDentalWebsite() {
           ) : (
             <form ref={formRef} onSubmit={handleSubmit} className="bg-white border border-[#e8edf2] rounded-2xl p-6 md:p-10 shadow-xl shadow-zinc-100/40 space-y-8">
               
-              {/* Personal Data */}
               <div className="space-y-4">
                 <div className="text-xs font-bold text-[#1a6fc4] uppercase tracking-wider pb-1 border-b border-zinc-100">1. Personal Information</div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -579,7 +577,6 @@ export default function AIMSDentalWebsite() {
                 </div>
               </div>
 
-              {/* Appointment Specifics */}
               <div className="space-y-4">
                 <div className="text-xs font-bold text-[#1a6fc4] uppercase tracking-wider pb-1 border-b border-zinc-100">2. Appointment Details</div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -633,7 +630,6 @@ export default function AIMSDentalWebsite() {
                 </div>
               </div>
 
-              {/* Case History Section */}
               <div className="space-y-4">
                 <div className="text-xs font-bold text-[#1a6fc4] uppercase tracking-wider pb-1 border-b border-zinc-100">3. Symptoms & Case History</div>
                 <div>
@@ -661,7 +657,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── CLINICAL FOOTPRINT CONTACT SECTION ── */}
+      {/* ── CONTACT ── */}
       <section id="contact" className="py-20 px-4 md:px-8 bg-[#1a1a2e] text-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-6 space-y-6">
@@ -707,7 +703,7 @@ export default function AIMSDentalWebsite() {
         </div>
       </section>
 
-      {/* ── IMMUTABLE FOOTER ── */}
+      {/* ── FOOTER ── */}
       <footer className="bg-[#111322] border-t border-white/5 py-12 px-4 md:px-8 text-center text-zinc-500 space-y-6">
         <div className="max-w-7xl mx-auto space-y-3">
           <div className="font-heading font-bold text-lg text-white tracking-tight">AIMS Dental & Aesthetics Centre</div>
