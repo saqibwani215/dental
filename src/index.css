@@ -1,0 +1,45 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+textarea, input, select {
+  font-family: inherit;
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 767px) {
+  /* Mobile adjustments */
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Tablet and above */
+  body {
+    font-size: 16px;
+  }
+}
