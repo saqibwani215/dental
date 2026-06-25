@@ -28,7 +28,7 @@ export default function About() {
         <div className="about-visual">
           <div className="about-photo-wrap">
             <img
-              src="./public/dental.webp"
+              src="src/assets/images/dental.webp"
               alt="AIMS specialist consulting a patient"
               loading="lazy"
             />
