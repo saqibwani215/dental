@@ -1,0 +1,113 @@
+.doctors {
+  background: var(--paper);
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.doctor-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 36px 28px 30px;
+  text-align: center;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  border: 1px solid transparent;
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--line);
+}
+
+/* ── Photo avatar ── */
+.doctor-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold-tint);
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  transition: outline-offset 0.22s ease;
+  background: var(--surface-deep);
+}
+
+.doctor-card:hover .doctor-avatar {
+  outline-offset: 7px;
+}
+
+.doctor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.doctor-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--teal);
+  background: var(--teal-tint);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 12px;
+}
+
+.doctor-card h3 {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.doctor-role {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.doctor-creds {
+  list-style: none;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 6px;
+}
+
+.doctor-creds li {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+  .doctors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 640px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 560px) {
+  .doctors-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .doctor-card {
+    padding: 28px 20px 24px;
+  }
+}

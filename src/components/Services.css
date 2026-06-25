@@ -1,0 +1,153 @@
+.services {
+  background: var(--surface);
+}
+
+.services-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── Card ── */
+.services-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px 20px 18px;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  cursor: default;
+}
+
+.services-card:hover {
+  box-shadow: var(--shadow-lift);
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* icon chip */
+.services-card-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--teal-tint);
+  color: var(--teal);
+  margin-top: 1px;
+}
+
+.services-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.services-card h3 {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.services-card-sub {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* category pill */
+.services-tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: var(--teal-tint);
+  border-radius: 99px;
+  padding: 2px 9px;
+  width: fit-content;
+}
+
+/* ── Category color accents ── */
+.services-card[data-category="aesthetics"] .services-card-icon {
+  background: var(--gold-tint);
+  color: var(--gold);
+}
+.services-card[data-category="aesthetics"] .services-tag {
+  background: var(--gold-tint);
+  color: var(--gold);
+}
+
+.services-card[data-category="surgical"] .services-card-icon {
+  background: #fef0ef;
+  color: #c1453a;
+}
+.services-card[data-category="surgical"] .services-tag {
+  background: #fef0ef;
+  color: #c1453a;
+}
+
+.services-card[data-category="diagnostics"] .services-card-icon {
+  background: #eef3fb;
+  color: #3a5fa5;
+}
+.services-card[data-category="diagnostics"] .services-tag {
+  background: #eef3fb;
+  color: #3a5fa5;
+}
+
+.services-card[data-category="preventive"] .services-card-icon {
+  background: #edf8f0;
+  color: #2d7c50;
+}
+.services-card[data-category="preventive"] .services-tag {
+  background: #edf8f0;
+  color: #2d7c50;
+}
+
+/* ── CTA note ── */
+.services-note {
+  margin-top: 44px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+.services-note-link {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.services-note-link:hover {
+  opacity: 0.75;
+}
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 560px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .services-card {
+    padding: 16px;
+  }
+}
