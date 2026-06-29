@@ -1,37 +1,7 @@
+import { Link } from 'react-router-dom'
+import { SERVICES, CATEGORY_LABELS } from './servicesData.js'
 import './Services.css'
 
-const SERVICES = [
-  { name: 'Dental X-Ray', category: 'diagnostics' },
-  { name: 'Root Canal Treatment', sub: 'Single, Multiple & Retreatment', category: 'restorative' },
-  { name: 'Dental Implants', category: 'restorative' },
-  { name: 'Extractions', category: 'surgical' },
-  { name: 'Wisdom Tooth Removal', category: 'surgical' },
-  { name: 'Scaling & Polishing', category: 'preventive' },
-  { name: 'Crown & Bridges', category: 'restorative' },
-  { name: 'Smile Makeover', category: 'cosmetic' },
-  { name: 'Gum Surgeries', category: 'surgical' },
-  { name: 'Dentures', sub: 'Partial & Complete', category: 'restorative' },
-  { name: 'Orthodontic Treatment', category: 'cosmetic' },
-  { name: 'Full Mouth Rehabilitation', category: 'restorative' },
-  { name: 'Botox & Fillers', category: 'aesthetics' },
-  { name: 'Threads & Cogs', category: 'aesthetics' },
-  { name: 'Hair Transplant', category: 'aesthetics' },
-  { name: 'Cosmetic Dentistry', category: 'cosmetic' },
-  { name: 'Treatment of Facial Injury & Jaw Fractures', category: 'surgical' },
-  { name: 'TMJ Problems Treatment', category: 'surgical' },
-  { name: 'Oral Cancer Screening', category: 'diagnostics' },
-]
-
-const CATEGORY_LABELS = {
-  diagnostics: 'Diagnostics',
-  restorative: 'Restorative',
-  surgical: 'Surgical',
-  preventive: 'Preventive',
-  cosmetic: 'Cosmetic',
-  aesthetics: 'Aesthetics',
-}
-
-// Simple tooth-like SVG icon for each card
 function ToothIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -55,7 +25,12 @@ export default function Services() {
 
         <div className="services-grid">
           {SERVICES.map((s) => (
-            <div className="services-card" key={s.name} data-category={s.category}>
+            <Link
+              to={`/services/${s.slug}`}
+              className="services-card"
+              key={s.name}
+              data-category={s.category}
+            >
               <span className="services-card-icon">
                 <ToothIcon />
               </span>
@@ -64,7 +39,8 @@ export default function Services() {
                 {s.sub && <p className="services-card-sub">{s.sub}</p>}
                 <span className="services-tag">{CATEGORY_LABELS[s.category]}</span>
               </div>
-            </div>
+              <span className="services-card-arrow">→</span>
+            </Link>
           ))}
         </div>
 

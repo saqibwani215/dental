@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="shell navbar-inner">
-        <a href="#top" className="navbar-brand" onClick={() => setOpen(false)}>
+        <a href="/" className="navbar-brand" onClick={() => setOpen(false)}>
           <BrandMark size={34} />
           <span>
             AIMS

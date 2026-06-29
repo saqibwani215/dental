@@ -1,22 +1,20 @@
 import './Doctors.css'
+import drAbidPortrait from '../assets/images/dr-abid-portrait.jpg'
 
 const DOCTORS = [
   {
-    // Real photo: professional male doctor/surgeon
-    photo: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&facepad=3',
-    initials: 'AR',
+    photo: drAbidPortrait,
     name: 'Dr. Abid Majeed Rather',
-    role: 'Consultant, Dental Surgery',
+    role: 'Consultant, Oral & Maxillofacial Surgery',
     tag: 'Implantologist · Facial Trauma · TMJ',
     creds: [
       'MDS — Oral & Maxillofacial Surgery, PGI Chandigarh',
-      'Ex-Senior Resident, AIIMS',
+      'Ex-Senior Resident, AIIMS New Delhi',
+      'Neobiotech Certified Implantologist',
     ],
   },
   {
-    // Real photo: professional female doctor
     photo: 'https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&facepad=3',
-    initials: 'BT',
     name: 'Dr. Bisma Aijaz Tak',
     role: 'HOD, Dental Surgery',
     tag: 'Gum Disease · Root Canal',
@@ -26,9 +24,7 @@ const DOCTORS = [
     ],
   },
   {
-    // Real photo: professional male doctor smiling
     photo: 'https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&facepad=3',
-    initials: 'IB',
     name: 'Dr. Irfan Bashir',
     role: 'Orthodontist',
     tag: 'Braces & Aligners',
